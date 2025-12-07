@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Profile - Dr. Sarah Johnson</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e5e7eb;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 14px;
+            width: 14px;
+            height: 14px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #e5e7eb;
+        }
+        
+        .skill-bar {
+            transition: width 1s ease-in-out;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white shadow-sm z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold text-gray-800">Profile</h1>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#biodata" class="nav-link text-gray-600 hover:text-gray-900">Biodata</a>
+                    <a href="#education" class="nav-link text-gray-600 hover:text-gray-900">Education</a>
+                    <a href="#experience" class="nav-link text-gray-600 hover:text-gray-900">Experience</a>
+                    <a href="#research" class="nav-link text-gray-600 hover:text-gray-900">Research</a>
+                    <a href="#others" class="nav-link text-gray-600 hover:text-gray-900">Others</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-6 py-4 space-y-3">
+                <a href="#biodata" class="block text-gray-600 hover:text-gray-900">Biodata</a>
+                <a href="#education" class="block text-gray-600 hover:text-gray-900">Education</a>
+                <a href="#experience" class="block text-gray-600 hover:text-gray-900">Experience</a>
+                <a href="#research" class="block text-gray-600 hover:text-gray-900">Research</a>
+                <a href="#others" class="block text-gray-600 hover:text-gray-900">Others</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white pt-24 pb-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/profile123/300/300" alt="Profile" 
+                             class="w-64 h-64 rounded-full mx-auto border-4 border-white shadow-2xl float-animation">
+                        <div class="absolute bottom-0 right-0 bg-green-500 w-8 h-8 rounded-full border-4 border-white"></div>
+                    </div>
+                </div>
+                <div class="md:w-2/3 text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 fade-in">Dr. Sarah Johnson</h1>
+                    <p class="text-xl mb-6 fade-in">Senior Research Scientist & Professor</p>
+                    <p class="text-lg mb-8 opacity-90 fade-in">
+                        Passionate about advancing knowledge in machine learning and artificial intelligence. 
+                        Dedicated to mentoring the next generation of researchers and innovators.
+                    </p>
+                    <div class="flex justify-center md:justify-start space-x-4 fade-in">
+                        <a href="#" class="bg-white text-purple-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+                            <i class="fas fa-download mr-2"></i>Download CV
+                        </a>
+                        <a href="#" class="border-2 border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition">
+                            <i class="fas fa-envelope mr-2"></i>Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biodata Section -->
+    <section id="biodata" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in">Biodata</h2>
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 card-hover fade-in">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">Personal Information</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-user w-6 text-purple-600"></i>
+                                <span class="ml-3 text-gray-700">Full Name: Dr. Sarah Elizabeth Johnson</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar w-6 text-purple-600"></i>
+                                <span class="ml-3 text-gray-700">Date of Birth: March 15, 1985</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt w-6 text-purple-600"></i>
+                                <span class="ml-3 text-gray-700">Location: San Francisco, CA</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-language w-6 text-purple-600"></i>
+                                <span class="ml-3 text-gray-700">Languages: English, French, Spanish</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">Contact Information</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope w-6 text-purple-600"></i>
+                                <span class="ml-3 text-gray-700">sarah.johnson@university.edu</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone w-6 text-purple-600"></i>
+                                <span class="ml-3 text-gray-700">+1 (555) 123-4567</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-globe w-6 text-purple-600"></i>
+                                <span class="ml-3 text-gray-700">www.sarahjohnson.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-linkedin w-6 text-purple-600"></i>
+                                <span class="ml-3 text-gray-700">linkedin.com/in/sarahjohnson</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 pt-8 border-t">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Summary</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Dr. Sarah Johnson is a distinguished researcher and educator with over 15 years of experience 
+                        in machine learning and artificial intelligence. She has published extensively in top-tier 
+                        conferences and journals, and her work has been cited over 10,000 times. Dr. Johnson is 
+                        committed to advancing the field through innovative research and dedicated mentorship of 
+                        students and early-career researchers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in">Education</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="relative">
+                    <div class="timeline-line"></div>
+                    <div class="space-y-8">
+                        <div class="relative pl-12 fade-in">
+                            <div class="timeline-dot"></div>
+                            <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-semibold text-gray-800">Ph.D. in Computer Science</h3>
+                                    <span class="text-sm text-gray-500">2010 - 2015</span>
+                                </div>
+                                <p class="text-purple-600 font-medium mb-2">Stanford University</p>
+                                <p class="text-gray-700">Dissertation: "Deep Learning Approaches for Natural Language Understanding"</p>
+                                <p class="text-sm text-gray-600 mt-2">Advisor: Prof. Andrew Ng</p>
+                            </div>
+                        </div>
+                        <div class="relative pl-12 fade-in">
+                            <div class="timeline-dot"></div>
+                            <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-semibold text-gray-800">M.S. in Computer Science</h3>
+                                    <span class="text-sm text-gray-500">2008 - 2010</span>
+                                </div>
+                                <p class="text-purple-600 font-medium mb-2">Massachusetts Institute of Technology</p>
+                                <p class="text-gray-700">Specialization: Machine Learning and Artificial Intelligence</p>
+                                <p class="text-sm text-gray-600 mt-2">GPA: 3.9/4.0</p>
+                            </div>
+                        </div>
+                        <div class="relative pl-12 fade-in">
+                            <div class="timeline-dot"></div>
+                            <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-semibold text-gray-800">B.S. in Computer Science</h3>
+                                    <span class="text-sm text-gray-500">2004 - 2008</span>
+                                </div>
+                                <p class="text-purple-600 font-medium mb-2">University of California, Berkeley</p>
+                                <p class="text-gray-700">Summa Cum Laude</p>
+                                <p class="text-sm text-gray-600 mt-2">GPA: 3.95/4.0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in">Experience</h2>
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover fade-in">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Senior Research Scientist</h3>
+                            <p class="text-purple-600 font-medium">Google AI</p>
+                        </div>
+                        <span class="text-sm text-gray-500">2020 - Present</span>
+                    </div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Leading research in large language models and their applications</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Managing a team of 12 researchers and engineers</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Published 15+ papers in top AI conferences</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover fade-in">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Associate Professor</h3>
+                            <p class="text-purple-600 font-medium">Stanford University</p>
+                        </div>
+                        <span class="text-sm text-gray-500">2015 - 2020</span>
+                    </div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Taught graduate courses in Machine Learning and NLP</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Advised 15+ PhD and Master's students</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Secured $2M+ in research funding</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover fade-in">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Research Scientist</h3>
+                            <p class="text-purple-600 font-medium">Facebook AI Research</p>
+                        </div>
+                        <span class="text-sm text-gray-500">2012 - 2015</span>
+                    </div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Developed novel deep learning architectures</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Collaborated on open-source AI frameworks</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Contributed to PyTorch development</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover fade-in">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Research Intern</h3>
+                            <p class="text-purple-600 font-medium">Microsoft Research</p>
+                        </div>
+                        <span class="text-sm text-gray-500">2011 - 2012</span>
+                    </div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Worked on speech recognition systems</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Published first-author paper at ICML</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Developed novel optimization algorithms</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Papers Section -->
+    <section id="research" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in">Research Papers</h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-8 flex flex-wrap gap-4 justify-center fade-in">
+                    <button class="filter-btn px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition" data-filter="all">
+                        All Papers
+                    </button>
+                    <button class="filter-btn px-4 py-2 bg-gray-300 text-gray-700 rounded-full hover:bg-gray-400 transition" data-filter="2023">
+                        2023
+                    </button>
+                    <button class="filter-btn px-4 py-2 bg-gray-300 text-gray-700 rounded-full hover:bg-gray-400 transition" data-filter="2022">
+                        2022
+                    </button>
+                    <button class="filter-btn px-4 py-2 bg-gray-300 text-gray-700 rounded-full hover:bg-gray-400 transition" data-filter="2021">
+                        2021
+                    </button>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="paper-card bg-white rounded-lg shadow-md p-6 card-hover fade-in" data-year="2023">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded">NeurIPS 2023</span>
+                            <span class="text-xs text-gray-500">2023</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Attention Is All You Need Revisited</h3>
+                        <p class="text-sm text-gray-600 mb-3">A comprehensive analysis of transformer architectures and their evolution over the past decade.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <span><i class="fas fa-quote-left mr-1"></i>1,234</span>
+                                <span><i class="fas fa-download mr-1"></i>5,678</span>
+                            </div>
+                            <a href="#" class="text-purple-600 hover:text-purple-700">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="paper-card bg-white rounded-lg shadow-md p-6 card-hover fade-in" data-year="2023">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded">ICML 2023</span>
+                            <span class="text-xs text-gray-500">2023</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Scaling Laws for Large Language Models</h3>
+                        <p class="text-sm text-gray-600 mb-3">Empirical study on how model performance scales with parameters and training data.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <span><i class="fas fa-quote-left mr-1"></i>2,345</span>
+                                <span><i class="fas fa-download mr-1"></i>8,901</span>
+                            </div>
+                            <a href="#" class="text-purple-600 hover:text-purple-700">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="paper-card bg-white rounded-lg shadow-md p-6 card-hover fade-in" data-year="2022">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded">ACL 2022</span>
+                            <span class="text-xs text-gray-500">2022</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Multilingual Understanding in LLMs</h3>
+                        <p class="text-sm text-gray-600 mb-3">Investigating cross-lingual transfer capabilities in large language models.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <span><i class="fas fa-quote-left mr-1"></i>987</span>
+                                <span><i class="fas fa-download mr-1"></i>3,456</span>
+                            </div>
+                            <a href="#" class="text-purple-600 hover:text-purple-700">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="paper-card bg-white rounded-lg shadow-md p-6 card-hover fade-in" data-year="2022">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded">CVPR 2022</span>
+                            <span class="text-xs text-gray-500">2022</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Vision-Language Pre-training</h3>
+                        <p class="text-sm text-gray-600 mb-3">Novel approaches for joint learning of visual and textual representations.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <span><i class="fas fa-quote-left mr-1"></i>1,567</span>
+                                <span><i class="fas fa-download mr-1"></i>6,789</span>
+                            </div>
+                            <a href="#" class="text-purple-600 hover:text-purple-700">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="paper-card bg-white rounded-lg shadow-md p-6 card-hover fade-in" data-year="2021">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded">ICLR 2021</span>
+                            <span class="text-xs text-gray-500">2021</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Efficient Training of Neural Networks</h3>
+                        <p class="text-sm text-gray-600 mb-3">Techniques for reducing computational costs in deep learning training.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <span><i class="fas fa-quote-left mr-1"></i>2,890</span>
+                                <span><i class="fas fa-download mr-1"></i>9,012</span>
+                            </div>
+                            <a href="#" class="text-purple-600 hover:text-purple-700">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="paper-card bg-white rounded-lg shadow-md p-6 card-hover fade-in" data-year="2021">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded">AAAI 2021</span>
+                            <span class="text-xs text-gray-500">2021</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Ethical AI Development</h3>
+                        <p class="text-sm text-gray-600 mb-3">Framework for responsible development and deployment of AI systems.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <span><i class="fas fa-quote-left mr-1"></i>1,234</span>
+                                <span><i class="fas fa-download mr-1"></i>4,567</span>
+                            </div>
+                            <a href="#" class="text-purple-600 hover:text-purple-700">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Others Section -->
+    <section id="others" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in">Others</h2>
+            <div class="max-w-6xl mx-auto space-y-12">
+                <!-- Skills -->
+                <div class="fade-in">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800">Technical Skills</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700">Python</span>
+                                    <span class="text-gray-600">95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="skill-bar bg-purple-600 h-2 rounded-full" style="width: 0%" data-width="95%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700">Machine Learning</span>
+                                    <span class="text-gray-600">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="skill-bar bg-purple-600 h-2 rounded-full" style="width: 0%" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700">Deep Learning</span>
+                                    <span class="text-gray-600">92%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="skill-bar bg-purple-600 h-2 rounded-full" style="width: 0%" data-width="92%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700">TensorFlow/PyTorch</span>
+                                    <span class="text-gray-600">88%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="skill-bar bg-purple-600 h-2 rounded-full" style="width: 0%" data-width="88%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700">Natural Language Processing</span>
+                                    <span class="text-gray-600">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="skill-bar bg-purple-600 h-2 rounded-full" style="width: 0%" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700">Computer Vision</span>
+                                    <span class="text-gray-600">80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="skill-bar bg-purple-600 h-2 rounded-full" style="width: 0%" data-width="80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Awards & Honors -->
+                <div class="fade-in">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800">Awards & Honors</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-gradient-to-br from-purple-500 to-pink-500 text-white rounded-lg p-6 text-center card-hover">
+                            <i class="fas fa-trophy text-4xl mb-4"></i>
+                            <h4 class="text-xl font-semibold mb-2">Best Paper Award</h4>
+                            <p class="text-sm opacity-90">NeurIPS 2022</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-500 to-cyan-500 text-white rounded-lg p-6 text-center card-hover">
+                            <i class="fas fa-medal text-4xl mb-4"></i>
+                            <h4 class="text-xl font-semibold mb-2">NSF CAREER Award</h4>
+                            <p class="text-sm opacity-90">2019</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-green-500 to-teal-500 text-white rounded-lg p-6 text-center card-hover">
+                            <i class="fas fa-star text-4xl mb-4"></i>
+                            <h4 class="text-xl font-semibold mb-2">IEEE Fellow</h4>
+                            <p class="text-sm opacity-90">2021</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interests -->
+                <div class="fade-in">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800">Interests & Hobbies</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm">Hiking</span>
+                        <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm">Photography</span>
+                        <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm">Reading</span>
+                        <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm">Traveling</span>
+                        <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm">Yoga</span>
+                        <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm">Cooking</span>
+                        <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm">Music</span>
+                        <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm">Volunteering</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2024 Dr. Sarah Johnson. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-purple-400 transition">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="hover:text-purple-400 transition">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="#" class="hover:text-purple-400 transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="hover:text-purple-400 transition">
+                        <i class="fab fa-google-scholar text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Active navigation link
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate skill bars when visible
+                    if (entry.target.querySelector('.skill-bar')) {
+                        const skillBars = entry.target.querySelectorAll('.skill-bar');
+                        skillBars.forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            setTimeout(() => {
+                                bar.style.width = width;
+                            }, 200);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Filter research papers
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const paperCards = document.querySelectorAll('.paper-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
+                
+                // Update button styles
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-purple-600', 'text-white');
+                    b.classList.add('bg-gray-300', 'text-gray-700');
+                });
+                btn.classList.remove('bg-gray-300', 'text-gray-700');
+                btn.classList.add('bg-purple-600', 'text-white');
+                
+                // Filter papers
+                paperCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-year') === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
